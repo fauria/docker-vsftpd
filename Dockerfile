@@ -14,6 +14,7 @@ RUN yum install -y \
 
 ENV FTP_USER **String**
 ENV FTP_PASS **Random**
+ENV LOG_STDOUT **Boolean**
 
 COPY vsftpd.conf /etc/vsftpd/
 COPY vsftpd_virtual /etc/pam.d/

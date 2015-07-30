@@ -10,27 +10,41 @@ if [ "$FTP_PASS" = "**Random**" ]; then
     export FTP_PASS=`cat /dev/urandom | tr -dc A-Z-a-z-0-9 | head -c${1:-16}`
 fi
 
+# Do not log to STDOUT by default:
+if [ "$LOG_STDOUT" = "**Boolean**" ]; then
+        export LOG_STDOUT=''
+else 
+        export LOG_STDOUT='Yes.'
+fi
+
 # Create home dir and update vsftpd user db:
 mkdir -p "/home/vsftpd/${FTP_USER}"
 echo -e "${FTP_USER}\n${FTP_PASS}" > /etc/vsftpd/virtual_users.txt
 /usr/bin/db_load -T -t hash -f /etc/vsftpd/virtual_users.txt /etc/vsftpd/virtual_users.db
 
+# Get log file path
+export LOG_FILE=`grep xferlog_file /etc/vsftpd/vsftpd.conf|cut -d= -f2`
+
 # stdout server info:
+if [ ! $LOG_STDOUT ]; then
 cat << EOB
-**************************************
-*                                    *
-*     Docker image: fauria/vsftd     *
-*                                    *
-**************************************
+	*************************************************
+	*                                               *
+	*    Docker image: fauria/vsftd                 *
+	*    https://github.com/fauria/docker-vsftpd    *
+	*                                               *
+	*************************************************
 
-SERVER INFO
------------
-· FTP User: ${FTP_USER}
-· FTP Password: ${FTP_PASS}
-· Log file: `grep xferlog_file /etc/vsftpd/vsftpd.conf|cut -d= -f2`
-
-https://github.com/fauria/docker-vsftpd
+	SERVER SETTINGS
+	---------------
+	· FTP User: $FTP_USER
+	· FTP Password: $FTP_PASS
+	· Log file: $LOG_FILE
+	· Redirect vsftpd log to STDOUT: No.
 EOB
+else
+    /usr/bin/ln -sf /dev/stdout $LOG_FILE
+fi
 
 # Run vsftpd:
 /usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf

@@ -24,6 +24,9 @@ RUN chmod +x /usr/sbin/run-vsftpd.sh
 RUN mkdir -p /home/vsftpd/
 RUN chown -R ftp:ftp /home/vsftpd/
 
-EXPOSE 21 21100 21101 21102 21103 21104 21105 21106 21107 21108 21109 21110
+VOLUME /home/vsftpd
+VOLUME /var/log/vsftpd
+
+EXPOSE 20 21 21100 21101 21102 21103 21104 21105 21106 21107 21108 21109 21110
 
 CMD ["/usr/sbin/run-vsftpd.sh"]

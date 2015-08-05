@@ -47,4 +47,4 @@ else
 fi
 
 # Run vsftpd:
-/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf
+&>/dev/null /usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf

@@ -77,7 +77,7 @@ docker run -d -v /my/data/directory:/home/vsftpd \
 -p 21105:21105 -p 21106:21106 -p 21107:21107 \
 -p 21108:21108 -p 21109:21109 -p 21110:21110 \
 -e FTP_USER=myuser -e FTP_PASS=mypass \
- --name vsftpd fauria/lap
+ --name vsftpd fauria/vsftpd
 ```
 
 4) Manually add a new FTP user to the container:

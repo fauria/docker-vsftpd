@@ -14,6 +14,9 @@ RUN yum install -y \
 
 ENV FTP_USER **String**
 ENV FTP_PASS **Random**
+ENV PASV_ADDRESS **IPv4**
+ENV PASV_MIN_PORT 21100
+ENV PASV_MAX_PORT 21110
 ENV LOG_STDOUT **Boolean**
 
 COPY vsftpd.conf /etc/vsftpd/
@@ -27,6 +30,6 @@ RUN chown -R ftp:ftp /home/vsftpd/
 VOLUME /home/vsftpd
 VOLUME /var/log/vsftpd
 
-EXPOSE 20 21 21100 21101 21102 21103 21104 21105 21106 21107 21108 21109 21110
+EXPOSE 20 21
 
 CMD ["/usr/sbin/run-vsftpd.sh"]

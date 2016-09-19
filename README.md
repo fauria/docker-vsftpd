@@ -37,6 +37,27 @@ This image uses environment variables to allow the configuration of some paramet
 
 ----
 
+* Variable name: `PASV_ADDRESS`
+* Default value: Docker host IP.
+* Accepted values: Any IPv4 address.
+* Description: If you don't specify an IP address to be used in passive mode, the routed IP address of the Docker host will be used. Bear in mind that this could be a local address.
+
+----
+
+* Variable name: `PASV_MIN_PORT`
+* Default value: 21100.
+* Accepted values: Any valid port number.
+* Description: This will be used as the lower bound of the passive mode port range. Remember to publish your ports with `docker -p` parameter.
+
+----
+
+* Variable name: `PASV_MAX_PORT`
+* Default value: 21110.
+* Accepted values: Any valid port number.
+* Description: This will be used as the upper bound of the passive mode port range. It will take longer to start a container with a high number of published ports.
+
+----
+
 * Variable name: LOG_STDOUT
 * Default value: Empty string.
 * Accepted values: Any string to enable, empty string or not defined to disable.
@@ -47,7 +68,7 @@ This image uses environment variables to allow the configuration of some paramet
 Exposed ports and volumes
 ----
 
-The image exposes ports `20` and `21`, along with the range `21100 - 21110`  for passive mode. Also, exports two volumes: `/home/vsftpd`, which contains users home directories, and `/var/log/vsftpd`, used to store logs.
+The image exposes ports `20` and `21`. Also, exports two volumes: `/home/vsftpd`, which contains users home directories, and `/var/log/vsftpd`, used to store logs.
 
 When sharing a homes directory between the host and the container (`/home/vsftpd`) the owner user id and group id should be 14 and 80 respectively. This correspond ftp user and ftp group on the container, but may match something else on the host.
 
@@ -65,17 +86,14 @@ Use cases
 ```bash
 docker run -d -p 21:21 -v /my/data/directory:/home/vsftpd --name vsftpd fauria/vsftpd
 # see logs for credentials:
-docker logs vsftpd  
+docker logs vsftpd
 ```
 
 3) Create a container with a custom user account, binding a data directory and enabling both active and passive mode:
 
 ```bash
 docker run -d -v /my/data/directory:/home/vsftpd \
--p 20:20 -p 21:21 -p 21100:21100 -p 21101:21101 \
--p 21102:21102 -p 21103:21103 -p 21104:21104 \
--p 21105:21105 -p 21106:21106 -p 21107:21107 \
--p 21108:21108 -p 21109:21109 -p 21110:21110 \
+-p 20:20 -p 21:21 -p 21100-21110:21100-21110
 -e FTP_USER=myuser -e FTP_PASS=mypass \
  --name vsftpd fauria/lap
 ```

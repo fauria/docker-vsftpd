@@ -13,7 +13,7 @@ fi
 # Do not log to STDOUT by default:
 if [ "$LOG_STDOUT" = "**Boolean**" ]; then
         export LOG_STDOUT=''
-else 
+else
         export LOG_STDOUT='Yes.'
 fi
 
@@ -22,6 +22,14 @@ mkdir -p "/home/vsftpd/${FTP_USER}"
 echo -e "${FTP_USER}\n${FTP_PASS}" > /etc/vsftpd/virtual_users.txt
 /usr/bin/db_load -T -t hash -f /etc/vsftpd/virtual_users.txt /etc/vsftpd/virtual_users.db
 
+# Set passive mode parameters:
+if [ "$PASV_ADDRESS" = "**IPv4**" ]; then
+    export PASV_ADDRESS=$(/sbin/ip route|awk '/default/ { print $3 }')
+fi
+
+echo "pasv_address=${PASV_ADDRESS}" >> /etc/vsftpd/vsftpd.conf
+echo "pasv_max_port=${PASV_MAX_PORT}" >> /etc/vsftpd/vsftpd.conf
+echo "pasv_min_port=${PASV_MIN_PORT}" >> /etc/vsftpd/vsftpd.conf
 # Get log file path
 export LOG_FILE=`grep xferlog_file /etc/vsftpd/vsftpd.conf|cut -d= -f2`
 

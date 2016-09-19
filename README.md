@@ -81,7 +81,7 @@ Use cases
   docker run --rm fauria/vsftp
 ```
 
-2) Create a container with default user account, binding a data directory:
+2) Create a container in ative mode with the default user account, binding a data directory:
 
 ```bash
 docker run -d -p 21:21 -v /my/data/directory:/home/vsftpd --name vsftpd fauria/vsftpd
@@ -89,16 +89,17 @@ docker run -d -p 21:21 -v /my/data/directory:/home/vsftpd --name vsftpd fauria/v
 docker logs vsftpd
 ```
 
-3) Create a container with a custom user account, binding a data directory and enabling both active and passive mode:
+3) Create a production container with a custom user account, binding a data directory and enabling both active and passive mode:
 
 ```bash
 docker run -d -v /my/data/directory:/home/vsftpd \
--p 20:20 -p 21:21 -p 21100-21110:21100-21110
--e FTP_USER=myuser -e FTP_PASS=mypass -e PASV_ADDRESS=127.0.0.1\
- --name vsftpd fauria/lap
+-p 20:20 -p 21:21 -p 21100-21110:21100-21110 \
+-e FTP_USER=myuser -e FTP_PASS=mypass \
+-e PASV_ADDRESS=127.0.0.1 -e PASV_MIN_PORT=21100 -e PASV_MAX_PORT=21110 \
+--name vsftpd fauria/lap --restart=always
 ```
 
-4) Manually add a new FTP user to the container:
+4) Manually add a new FTP user to an existing container:
 ```bash
 docker exec -i -t vsftpd bash
 mkdir /home/vsftpd/myuser

@@ -1,6 +1,6 @@
 # fauria/vsftpd
 
-![docker_logo](https://github.com/fauria/docker-vsftpd/blob/master/docker_139x115.png)![docker_fauria_logo](https://github.com/fauria/docker-vsftpd/blob/master/docker_fauria_161x115.png)
+![docker_logo](https://raw.githubusercontent.com/fauria/docker-vsftpd/master/docker_139x115.png)![docker_fauria_logo](https://raw.githubusercontent.com/fauria/docker-vsftpd/master/docker_fauria_161x115.png)
 
 [![](https://images.microbadger.com/badges/image/fauria/vsftpd.svg)](https://microbadger.com/images/fauria/vsftpd "Get your own image badge on microbadger.com")
 

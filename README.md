@@ -2,6 +2,8 @@
 
 ![docker_logo](https://googledrive.com/host/0B7q6BLMXak9VfkpQY3YzNldlSmtxRTZCMEtEVlhhR3QtMFc3aEYzVzA5YlM5MWw5OXhqV0U/docker_139x115.png)![docker_fauria_logo](https://googledrive.com/host/0B7q6BLMXak9VfkpQY3YzNldlSmtxRTZCMEtEVlhhR3QtMFc3aEYzVzA5YlM5MWw5OXhqV0U/docker_fauria_161x115.png)
 
+[![](https://images.microbadger.com/badges/image/fauria/vsftpd.svg)](https://microbadger.com/images/fauria/vsftpd "Get your own image badge on microbadger.com")
+
 This Docker container implements a vsftpd server, with the following features:
 
  * Centos 7 base image.
@@ -81,7 +83,7 @@ Use cases
   docker run --rm fauria/vsftp
 ```
 
-2) Create a container in ative mode with the default user account, binding a data directory:
+2) Create a container in active mode using the default user account, with a binded data directory:
 
 ```bash
 docker run -d -p 21:21 -v /my/data/directory:/home/vsftpd --name vsftpd fauria/vsftpd
@@ -89,14 +91,14 @@ docker run -d -p 21:21 -v /my/data/directory:/home/vsftpd --name vsftpd fauria/v
 docker logs vsftpd
 ```
 
-3) Create a production container with a custom user account, binding a data directory and enabling both active and passive mode:
+3) Create a **production container** with a custom user account, binding a data directory and enabling both active and passive mode:
 
 ```bash
 docker run -d -v /my/data/directory:/home/vsftpd \
 -p 20:20 -p 21:21 -p 21100-21110:21100-21110 \
 -e FTP_USER=myuser -e FTP_PASS=mypass \
 -e PASV_ADDRESS=127.0.0.1 -e PASV_MIN_PORT=21100 -e PASV_MAX_PORT=21110 \
---name vsftpd fauria/lap --restart=always
+--name vsftpd --restart=always fauria/lap
 ```
 
 4) Manually add a new FTP user to an existing container:

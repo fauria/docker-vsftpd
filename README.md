@@ -80,7 +80,7 @@ Use cases
 1) Create a temporary container for testing purposes:
 
 ```bash
-  docker run --rm fauria/vsftp
+  docker run --rm fauria/vsftpd
 ```
 
 2) Create a container in active mode using the default user account, with a binded data directory:

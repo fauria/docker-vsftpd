@@ -30,6 +30,6 @@ RUN chown -R ftp:ftp /home/vsftpd/
 VOLUME /home/vsftpd
 VOLUME /var/log/vsftpd
 
-EXPOSE 20 21
+EXPOSE 20 21 21100-21110
 
 CMD ["/usr/sbin/run-vsftpd.sh"]

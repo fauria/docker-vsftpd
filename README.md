@@ -69,6 +69,20 @@ This image uses environment variables to allow the configuration of some paramet
 
 ----
 
+* Variable name: `USER_ID`
+* Default value: 14
+* Accepted values: Any numbers.
+* Description: User ID that is an owner of the home directory.
+
+----
+
+* Variable name: `GROUP_ID`
+* Default value: 50
+* Accepted values: Any numbers.
+* Description: Group ID of the user that is an owner of the home directory.
+
+----
+
 Exposed ports and volumes
 ----
 

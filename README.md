@@ -27,20 +27,6 @@ Environment variables
 
 This image uses environment variables to allow the configuration of some parameteres at run time:
 
-* Variable name: `USER_ID`
-* Default value: 14
-* Accepted values: Any numbers.
-* Description: User ID that is an owner of the home directory.
-
-----
-
-* Variable name: `GROUP_ID`
-* Default value: 50
-* Accepted values: Any numbers.
-* Description: Group ID of the user that is an owner of the home directory.
-
-----
-
 * Variable name: `FTP_USER`
 * Default value: admin
 * Accepted values: Any string. Avoid whitespaces and special chars.

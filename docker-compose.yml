@@ -9,6 +9,10 @@ services:
       args:
         USER_ID: 1000
         GROUP_ID: 1000
+    ports:
+      - 0.0.0.0:20:20
+      - 0.0.0.0:21:21
+      - 21100-21110:21100-21110
     volumes:
       - ./home:/home/vsftpd
       - ./logs:/var/log/vsftpd

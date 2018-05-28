@@ -9,6 +9,7 @@ services:
       args:
         USER_ID: 1000
         GROUP_ID: 1000
+    restart: always
     ports:
       - 0.0.0.0:20:20
       - 0.0.0.0:21:21

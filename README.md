@@ -48,6 +48,20 @@ This image uses environment variables to allow the configuration of some paramet
 
 ----
 
+* Variable name: `PASV_ADDR_RESOLVE`
+* Default value: NO.
+* Accepted values: YES or NO.
+* Description: Set to YES if you want to use a hostname (as opposed to IP address) in the PASV_ADDRESS option.
+
+----
+
+* Variable name: `PASV_ENABLE`
+* Default value: YES.
+* Accepted values: YES or NO.
+* Description: Set to NO if you want to disallow the PASV method of obtaining a data connection.
+
+----
+
 * Variable name: `PASV_MIN_PORT`
 * Default value: 21100.
 * Accepted values: Any valid port number.
@@ -62,10 +76,24 @@ This image uses environment variables to allow the configuration of some paramet
 
 ----
 
-* Variable name: LOG_STDOUT
+* Variable name: `LOG_STDOUT`
 * Default value: Empty string.
 * Accepted values: Any string to enable, empty string or not defined to disable.
 * Description: Output vsftpd log through STDOUT, so that it can be accessed through the [container logs](https://docs.docker.com/reference/commandline/logs/).
+
+----
+
+* Variable name: `FILE_OPEN_MODE`
+* Default value: 0666.
+* Accepted values: File system permissions.
+* Description: The permissions with which uploaded files are created. Umasks are applied on top of this value. You may wish to change to 0777 if you want uploaded files to be executable.
+
+----
+
+* Variable name: `LOCAL_UMASK`
+* Default value: 077.
+* Accepted values: File system permissions.
+* Description: The value that the umask for file creation is set to for local users. NOTE! If you want to specify octal values, remember the "0" prefix otherwise the value will be treated as a base 10 integer!
 
 ----
 

@@ -1,4 +1,8 @@
 FROM centos:7
+
+ARG USER_ID=14
+ARG GROUP_ID=50
+
 MAINTAINER Fer Uria <fauria@gmail.com>
 LABEL Description="vsftpd Docker image based on Centos 7. Supports passive mode and virtual users." \
 	License="Apache License 2.0" \
@@ -11,12 +15,19 @@ RUN yum install -y \
 	db4-utils \
 	db4 && yum clean all
 
+RUN usermod -u ${USER_ID} ftp
+RUN groupmod -g ${GROUP_ID} ftp
+
 ENV FTP_USER **String**
 ENV FTP_PASS **Random**
 ENV PASV_ADDRESS **IPv4**
+ENV PASV_ADDR_RESOLVE NO
+ENV PASV_ENABLE YES
 ENV PASV_MIN_PORT 21100
 ENV PASV_MAX_PORT 21110
 ENV LOG_STDOUT **Boolean**
+ENV FILE_OPEN_MODE 0666
+ENV LOCAL_UMASK 077
 
 COPY vsftpd.conf /etc/vsftpd/
 COPY vsftpd_virtual /etc/pam.d/

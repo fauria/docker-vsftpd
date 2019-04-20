@@ -90,6 +90,13 @@ This image uses environment variables to allow the configuration of some paramet
 
 ----
 
+* Variable name: `XFERLOG_STD_FORMAT`
+* Default value: NO.
+* Accepted values: YES or NO.
+* Description: Set to YES if you want the transfer log file to be written in standard xferlog format.
+
+----
+
 * Variable name: `LOG_STDOUT`
 * Default value: Empty string.
 * Accepted values: Any string to enable, empty string or not defined to disable.

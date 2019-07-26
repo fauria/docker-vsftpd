@@ -18,6 +18,15 @@ RUN yum install -y \
 RUN usermod -u ${USER_ID} ftp
 RUN groupmod -g ${GROUP_ID} ftp
 
+ENV LC_ALL=zh_CN.utf8
+ENV LANG=zh_CN.utf8
+ENV LANGUAGE=zh_CN.utf8
+
+RUN yum -y install kde-l10n-Chinese telnet && \
+    yum -y reinstall glibc-common &&\
+    yum clean all &&\
+    localedef -c -f UTF-8 -i zh_CN zh_CN.utf8
+
 ENV FTP_USER **String**
 ENV FTP_PASS **Random**
 ENV PASV_ADDRESS **IPv4**

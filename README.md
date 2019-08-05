@@ -25,7 +25,7 @@ docker pull fauria/vsftpd
 Environment variables
 ----
 
-This image uses environment variables to allow the configuration of some parameteres at run time:
+This image uses environment variables to allow the configuration of some parameters at run time:
 
 * Variable name: `FTP_USER`
 * Default value: admin
@@ -37,7 +37,7 @@ This image uses environment variables to allow the configuration of some paramet
 * Variable name: `FTP_PASS`
 * Default value: Random string.
 * Accepted values: Any string.
-* Description: If you don't specify a password for the default FTP account through `FTP_PASS`, a 16 characters random string will be automatically generated. You can obtain this value through the [container logs](https://docs.docker.com/reference/commandline/logs/).
+* Description: If you don't specify a password for the default FTP account through `FTP_PASS`, a 16 character random string will be automatically generated. You can obtain this value through the [container logs](https://docs.docker.com/engine/reference/commandline/container_logs/).
 
 ----
 
@@ -100,7 +100,7 @@ This image uses environment variables to allow the configuration of some paramet
 * Variable name: `LOG_STDOUT`
 * Default value: Empty string.
 * Accepted values: Any string to enable, empty string or not defined to disable.
-* Description: Output vsftpd log through STDOUT, so that it can be accessed through the [container logs](https://docs.docker.com/reference/commandline/logs/).
+* Description: Output vsftpd log through STDOUT, so that it can be accessed through the [container logs](https://docs.docker.com/engine/reference/commandline/container_logs/https://docs.docker.com/reference/commandline/logs/).
 
 ----
 
@@ -123,7 +123,7 @@ Exposed ports and volumes
 
 The image exposes ports `20` and `21`. Also, exports two volumes: `/home/vsftpd`, which contains users home directories, and `/var/log/vsftpd`, used to store logs.
 
-When sharing a homes directory between the host and the container (`/home/vsftpd`) the owner user id and group id should be 14 and 80 respectively. This correspond ftp user and ftp group on the container, but may match something else on the host.
+When sharing a homes directory between the host and the container (`/home/vsftpd`) the owner user id and group id should be 14 and 80 respectively. This corresponds to ftp user and ftp group on the container, but may match something else on the host.
 
 Use cases
 ----

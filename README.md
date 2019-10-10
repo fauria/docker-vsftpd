@@ -118,10 +118,31 @@ This image uses environment variables to allow the configuration of some paramet
 
 ----
 
+* Variable name: `SSL_ENABLE`
+* Default value: NO
+* Accepted values: YES or NO.
+* Description: Set to YES if you want to enable SSL encryption - make FTPS server.
+
+----
+
+* Variable name: `TLS_CERT`
+* Default value: cert.pem
+* Accepted values: Any string represanting filename with extension
+* Description: Certificate filename which should be located in `/etc/vsftpd/cert/` of container.
+
+----
+
+* Variable name: `TLS_KEY`
+* Default value: key.pem
+* Accepted values: Any string represanting filename with extension
+* Description: Key filename which should be located in `/etc/vsftpd/cert/` of container.
+
+----
+
 Exposed ports and volumes
 ----
 
-The image exposes ports `20` and `21`. Also, exports two volumes: `/home/vsftpd`, which contains users home directories, and `/var/log/vsftpd`, used to store logs.
+The image exposes ports `20` and `21`. Also, exports three volumes: `/home/vsftpd`, which contains users home directories, `/var/log/vsftpd`, used to store logs and `/etc/vsftpd/cert`, to provide SSL certificate to container.
 
 When sharing a homes directory between the host and the container (`/home/vsftpd`) the owner user id and group id should be 14 and 80 respectively. This correspond ftp user and ftp group on the container, but may match something else on the host.
 
@@ -142,12 +163,13 @@ docker run -d -p 21:21 -v /my/data/directory:/home/vsftpd --name vsftpd fauria/v
 docker logs vsftpd
 ```
 
-3) Create a **production container** with a custom user account, binding a data directory and enabling both active and passive mode:
+3) Create a **production container** with a custom user account, SSL enabled, binding a data directory and enabling both active and passive mode:
 
 ```bash
 docker run -d -v /my/data/directory:/home/vsftpd \
 -p 20:20 -p 21:21 -p 21100-21110:21100-21110 \
 -e FTP_USER=myuser -e FTP_PASS=mypass \
+-e SSL_ENABLE=YES -e TLS_CERT=ftps_localhost.crt -e TLS_KEY=ftps_localhost.key \
 -e PASV_ADDRESS=127.0.0.1 -e PASV_MIN_PORT=21100 -e PASV_MAX_PORT=21110 \
 --name vsftpd --restart=always fauria/vsftpd
 ```

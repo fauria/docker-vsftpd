@@ -100,7 +100,7 @@ This image uses environment variables to allow the configuration of some paramet
 * Variable name: `LOG_STDOUT`
 * Default value: Empty string.
 * Accepted values: Any string to enable, empty string or not defined to disable.
-* Description: Output vsftpd log through STDOUT, so that it can be accessed through the [container logs](https://docs.docker.com/engine/reference/commandline/container_logs/https://docs.docker.com/reference/commandline/logs/).
+* Description: Output vsftpd log through STDOUT, so that it can be accessed through the [container logs](https://docs.docker.com/engine/reference/commandline/container_logs).
 
 ----
 

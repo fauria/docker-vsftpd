@@ -17,3 +17,4 @@ services:
     volumes:
       - ./home:/home/vsftpd
       - ./logs:/var/log/vsftpd
+      - ./cert:/etc/vsftpd/cert

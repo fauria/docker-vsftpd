@@ -41,6 +41,13 @@ This image uses environment variables to allow the configuration of some paramet
 
 ----
 
+* Variable name: `REVERSE_LOOKUP_ENABLE`
+* Default value: YES.
+* Accepted values: YES or NO.
+* Description: Set to YES if you want vsftpd to transform the ip address into the hostname, before pam authentication. This is useful if you use pam_access including the hostname. If you want vsftpd to run on the environment where the reverse lookup for some hostname is available and the name server doesn't respond for a while, you should set this to NO to avoid a performance issue.
+
+----
+
 * Variable name: `PASV_ADDRESS_ENABLE`
 * Default value: NO
 * Accepted values: <NO|YES>

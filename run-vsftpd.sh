@@ -29,14 +29,17 @@ if [ "$PASV_ADDRESS" = "**IPv4**" ]; then
     export PASV_ADDRESS=$(/sbin/ip route|awk '/default/ { print $3 }')
 fi
 
-echo "pasv_address=${PASV_ADDRESS}" >> /etc/vsftpd/vsftpd.conf
-echo "pasv_max_port=${PASV_MAX_PORT}" >> /etc/vsftpd/vsftpd.conf
-echo "pasv_min_port=${PASV_MIN_PORT}" >> /etc/vsftpd/vsftpd.conf
-echo "pasv_addr_resolve=${PASV_ADDR_RESOLVE}" >> /etc/vsftpd/vsftpd.conf
-echo "pasv_enable=${PASV_ENABLE}" >> /etc/vsftpd/vsftpd.conf
-echo "file_open_mode=${FILE_OPEN_MODE}" >> /etc/vsftpd/vsftpd.conf
-echo "local_umask=${LOCAL_UMASK}" >> /etc/vsftpd/vsftpd.conf
-echo "xferlog_std_format=${XFERLOG_STD_FORMAT}" >> /etc/vsftpd/vsftpd.conf
+# Custom exposed options:
+vsftpd_conf=/etc/vsftpd/vsftpd.conf
+grep -Fq "reverse_lookup_enable=" ${vsftpd_conf} || echo "reverse_lookup_enable=${REVERSE_LOOKUP_ENABLE}" >> ${vsftpd_conf}
+grep -Fq "pasv_address="          ${vsftpd_conf} || echo "pasv_address=${PASV_ADDRESS}"                   >> ${vsftpd_conf}
+grep -Fq "pasv_max_port="         ${vsftpd_conf} || echo "pasv_max_port=${PASV_MAX_PORT}"                 >> ${vsftpd_conf}
+grep -Fq "pasv_min_port="         ${vsftpd_conf} || echo "pasv_min_port=${PASV_MIN_PORT}"                 >> ${vsftpd_conf}
+grep -Fq "pasv_addr_resolve="     ${vsftpd_conf} || echo "pasv_addr_resolve=${PASV_ADDR_RESOLVE}"         >> ${vsftpd_conf}
+grep -Fq "pasv_enable="           ${vsftpd_conf} || echo "pasv_enable=${PASV_ENABLE}"                     >> ${vsftpd_conf}
+grep -Fq "file_open_mode="        ${vsftpd_conf} || echo "file_open_mode=${FILE_OPEN_MODE}"               >> ${vsftpd_conf}
+grep -Fq "local_umask="           ${vsftpd_conf} || echo "local_umask=${LOCAL_UMASK}"                     >> ${vsftpd_conf}
+grep -Fq "xferlog_std_format="    ${vsftpd_conf} || echo "xferlog_std_format=${XFERLOG_STD_FORMAT}"       >> ${vsftpd_conf}
 
 # Get log file path
 export LOG_FILE=`grep xferlog_file /etc/vsftpd/vsftpd.conf|cut -d= -f2`

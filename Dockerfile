@@ -13,7 +13,8 @@ RUN yum -y update && yum clean all
 RUN yum install -y \
 	vsftpd \
 	db4-utils \
-	db4 && yum clean all
+	db4 \
+	iproute && yum clean all
 
 RUN usermod -u ${USER_ID} ftp
 RUN groupmod -g ${GROUP_ID} ftp

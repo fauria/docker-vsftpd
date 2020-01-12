@@ -41,20 +41,6 @@ This image uses environment variables to allow the configuration of some paramet
 
 ----
 
-* Variable name: `PASV_ADDRESS_ENABLE`
-* Default value: NO
-* Accepted values: <NO|YES>
-* Description: Enables / Disables Passive Mode
-
-----
-
-* Variable name: `PASV_ADDRESS_RESOLVE`
-* Default value: YES
-* Accepted values: <NO|YES>
-* Description: Set to YES if you want to use a hostname (as opposed to IP address) in the `PASV_ADDRESS` option.
-
-----
-
 * Variable name: `PASV_ADDRESS`
 * Default value: Docker host IP / Hostname.
 * Accepted values: Any IPv4 address or Hostname (see PASV_ADDRESS_RESOLVE).

@@ -37,6 +37,7 @@ echo "pasv_enable=${PASV_ENABLE}" >> /etc/vsftpd/vsftpd.conf
 echo "file_open_mode=${FILE_OPEN_MODE}" >> /etc/vsftpd/vsftpd.conf
 echo "local_umask=${LOCAL_UMASK}" >> /etc/vsftpd/vsftpd.conf
 echo "xferlog_std_format=${XFERLOG_STD_FORMAT}" >> /etc/vsftpd/vsftpd.conf
+echo "reverse_lookup_enable=${REVERSE_LOOKUP_ENABLE}" >> /etc/vsftpd/vsftpd.conf
 
 # Get log file path
 export LOG_FILE=`grep xferlog_file /etc/vsftpd/vsftpd.conf|cut -d= -f2`

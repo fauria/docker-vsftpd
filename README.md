@@ -118,6 +118,13 @@ This image uses environment variables to allow the configuration of some paramet
 
 ----
 
+* Variable name: `REVERSE_LOOKUP_ENABLE`
+* Default value: YES.
+* Accepted values: YES or NO.
+* Description: Set to NO if you want to avoid performance issues where a name server doesn't respond to a reverse lookup.
+
+----
+
 Exposed ports and volumes
 ----
 

@@ -125,6 +125,19 @@ This image uses environment variables to allow the configuration of some paramet
 
 ----
 
+* Variable name: `PASV_PROMISCUOUS`
+* Default value: NO.
+* Accepted values: YES or NO.
+* Description: Set to YES if you want to disable the PASV security check that ensures the data connection originates from the same IP address as the control connection. Only enable if you know what you are doing! The only legitimate use for this is in some form of secure tunnelling scheme, or perhaps to facilitate FXP support.
+
+----
+* Variable name: `PORT_PROMISCUOUS`
+* Default value: NO.
+* Accepted values: YES or NO.
+* Description: Set to YES if you want to disable the PORT security check that ensures that outgoing data connections can only connect to the client. Only enable if you know what you are doing! Legitimate use for this is to facilitate FXP support.
+
+----
+
 Exposed ports and volumes
 ----
 

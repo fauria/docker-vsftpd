@@ -63,36 +63,36 @@ This image uses environment variables to allow the configuration of some paramet
 ----
 
 * Variable name: `PASV_ADDR_RESOLVE`
-* Default value: NO.
-* Accepted values: YES or NO.
+* Default value: NO
+* Accepted values: <NO|YES>
 * Description: Set to YES if you want to use a hostname (as opposed to IP address) in the PASV_ADDRESS option.
 
 ----
 
 * Variable name: `PASV_ENABLE`
-* Default value: YES.
-* Accepted values: YES or NO.
+* Default value: YES
+* Accepted values: <NO|YES>
 * Description: Set to NO if you want to disallow the PASV method of obtaining a data connection.
 
 ----
 
 * Variable name: `PASV_MIN_PORT`
-* Default value: 21100.
+* Default value: 21100
 * Accepted values: Any valid port number.
 * Description: This will be used as the lower bound of the passive mode port range. Remember to publish your ports with `docker -p` parameter.
 
 ----
 
 * Variable name: `PASV_MAX_PORT`
-* Default value: 21110.
+* Default value: 21110
 * Accepted values: Any valid port number.
 * Description: This will be used as the upper bound of the passive mode port range. It will take longer to start a container with a high number of published ports.
 
 ----
 
 * Variable name: `XFERLOG_STD_FORMAT`
-* Default value: NO.
-* Accepted values: YES or NO.
+* Default value: NO
+* Accepted values: <NO|YES>
 * Description: Set to YES if you want the transfer log file to be written in standard xferlog format.
 
 ----
@@ -105,35 +105,35 @@ This image uses environment variables to allow the configuration of some paramet
 ----
 
 * Variable name: `FILE_OPEN_MODE`
-* Default value: 0666.
+* Default value: 0666
 * Accepted values: File system permissions.
 * Description: The permissions with which uploaded files are created. Umasks are applied on top of this value. You may wish to change to 0777 if you want uploaded files to be executable.
 
 ----
 
 * Variable name: `LOCAL_UMASK`
-* Default value: 077.
+* Default value: 077
 * Accepted values: File system permissions.
 * Description: The value that the umask for file creation is set to for local users. NOTE! If you want to specify octal values, remember the "0" prefix otherwise the value will be treated as a base 10 integer!
 
 ----
 
 * Variable name: `REVERSE_LOOKUP_ENABLE`
-* Default value: YES.
-* Accepted values: YES or NO.
+* Default value: YES
+* Accepted values: <NO|YES>
 * Description: Set to NO if you want to avoid performance issues where a name server doesn't respond to a reverse lookup.
 
 ----
 
 * Variable name: `PASV_PROMISCUOUS`
-* Default value: NO.
-* Accepted values: YES or NO.
+* Default value: NO
+* Accepted values: <NO|YES>
 * Description: Set to YES if you want to disable the PASV security check that ensures the data connection originates from the same IP address as the control connection. Only enable if you know what you are doing! The only legitimate use for this is in some form of secure tunnelling scheme, or perhaps to facilitate FXP support.
 
 ----
 * Variable name: `PORT_PROMISCUOUS`
-* Default value: NO.
-* Accepted values: YES or NO.
+* Default value: NO
+* Accepted values: <NO|YES>
 * Description: Set to YES if you want to disable the PORT security check that ensures that outgoing data connections can only connect to the client. Only enable if you know what you are doing! Legitimate use for this is to facilitate FXP support.
 
 ----

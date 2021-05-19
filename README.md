@@ -162,8 +162,8 @@ docker run -d -v /my/data/directory:/home/vsftpd \
 ```bash
 docker exec -i -t vsftpd bash
 mkdir /home/vsftpd/myuser
+chown ftp:ftp /home/vsftpd/myuser
 echo -e "myuser\nmypass" >> /etc/vsftpd/virtual_users.txt
 /usr/bin/db_load -T -t hash -f /etc/vsftpd/virtual_users.txt /etc/vsftpd/virtual_users.db
 exit
-docker restart vsftpd
 ```

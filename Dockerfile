@@ -10,7 +10,7 @@ LABEL Description="vsftpd Docker image based on Centos 9. Supports passive mode 
 	Version="1.0"
 
 RUN yum -y update && yum clean all
-RUN yum install -y vsftpd iproute && yum clean all
+RUN yum install -y vsftpd libdb-utils iproute && yum clean all
 
 RUN usermod -u ${USER_ID} ftp
 RUN groupmod -g ${GROUP_ID} ftp

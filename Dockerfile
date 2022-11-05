@@ -1,4 +1,4 @@
-FROM centos:7
+FROM quay.io/centos/centos:stream8
 
 ARG USER_ID=14
 ARG GROUP_ID=50

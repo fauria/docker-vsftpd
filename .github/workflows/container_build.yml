@@ -11,11 +11,7 @@ jobs:
 
     - name: Shellcheck
       id: Shellcheck
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v3
-        - name: Run ShellCheck
-          uses: ludeeus/action-shellcheck@master
+      uses: ludeeus/action-shellcheck@master
 
     - name: Build Image
       id: build-image

@@ -12,7 +12,7 @@ This Docker container implements a vsftpd server, with the following features:
  * vsftpd 3.0
  * Virtual users
  * Passive mode
- * Logging to a file or STDOUT.
+ * Logging to a file or `STDOUT`.
 
 ### Installation from [Docker registry hub](https://registry.hub.docker.com/r/fauria/vsftpd/).
 

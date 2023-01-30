@@ -8,8 +8,8 @@
 
 This Docker container implements a vsftpd server, with the following features:
 
- * Centos 7 base image.
- * vsftpd 3.0
+ * Centos 9 base image.
+ * vsftpd 3.0.3
  * Virtual users
  * Passive mode
  * Logging to a file or `STDOUT`.

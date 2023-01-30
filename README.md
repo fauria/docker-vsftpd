@@ -123,6 +123,12 @@ This image uses environment variables to allow the configuration of some paramet
 * Description: Set to YES if you want to disable the PORT security check that ensures that outgoing data connections can only connect to the client. Only enable if you know what you are doing! Legitimate use for this is to facilitate FXP support.
 
 ----
+* Variable name: `LISTEN_PORT`
+* Default value: 21
+* Accepted values: Any valid port number.
+* Description: Set to a port above 1024 if you are using podman in rootless mode.
+
+----
 
 Exposed ports and volumes
 ----

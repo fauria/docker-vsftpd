@@ -3,11 +3,11 @@ FROM centos:7
 ARG USER_ID=14
 ARG GROUP_ID=50
 
-MAINTAINER koshigoe <koshigoeb@gmail.com>
 LABEL Description="vsftpd Docker image based on Centos 7. Supports passive mode and virtual users." \
 	License="Apache License 2.0" \
 	Usage="docker run -d -p [HOST PORT NUMBER]:21 -v [HOST FTP HOME]:/home/vsftpd fauria/vsftpd" \
-	Version="1.0"
+	Version="1.0" \
+	maintainer="koshigoe <koshigoeb@gmail.com>"
 
 RUN yum -y update && yum clean all
 RUN yum install -y \

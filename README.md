@@ -123,6 +123,13 @@ This image uses environment variables to allow the configuration of some paramet
 * Description: Set to YES if you want to disable the PORT security check that ensures that outgoing data connections can only connect to the client. Only enable if you know what you are doing! Legitimate use for this is to facilitate FXP support.
 
 ----
+* Variable name: `DELAY_FAILED_LOGIN`
+* Default value: 1
+* Accepted values: positive integer
+* Description: value of configuration `delay_failed_login`
+
+----
+
 
 Exposed ports and volumes
 ----

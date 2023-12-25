@@ -47,5 +47,6 @@ VOLUME /home/vsftpd
 VOLUME /var/log/vsftpd
 
 EXPOSE 20 21
+EXPOSE $PASV_MIN_PORT-$PASV_MAX_PORT
 
 CMD ["/usr/sbin/run-vsftpd.sh"]
